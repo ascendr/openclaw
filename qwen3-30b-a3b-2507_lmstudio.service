@@ -1,0 +1,15 @@
+[Unit]
+Description=LM Studio Server
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=oc
+Environment="HOME=/home/oc"
+ExecStartPre=/home/oc/.lmstudio/bin/lms daemon up
+ExecStartPre=/home/oc/.lmstudio/bin/lms load qwen/qwen3-30b-a3b-2507 --context-length 32768 --gpu 0.8 --yes
+ExecStart=/home/oc/.lmstudio/bin/lms server start
+ExecStop=/home/oc/.lmstudio/bin/lms daemon down
+
+[Install]
+WantedBy=multi-user.target
