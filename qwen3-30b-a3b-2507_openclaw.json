@@ -1,0 +1,43 @@
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "lmstudio": {
+        "baseUrl": "http://localhost:1234/v1",
+        "apiKey": "lmstudio-local",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen/qwen3-30b-a3b-2507",
+            "name": "qwen/qwen3-30b-a3b-2507",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32768,
+            "maxTokens": 262144
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "lmstudio/qwen3-30b-a3b-2507"
+      },
+      "workspace": "/home/oc/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
